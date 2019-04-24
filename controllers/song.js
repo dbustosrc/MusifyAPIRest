@@ -109,9 +109,7 @@ function uploadFile(req, res){
 
     if(req.files){
         var filepath = req.files.file.path;
-        var filesplit = filepath.split('\\');
-        
-        filename = filesplit[2];
+        var filename = filepath.split('\\').pop().split('/').pop();
 
         var filenamesplit = filename.split('\.');
         var fileext = filenamesplit[1];
@@ -134,7 +132,7 @@ function uploadFile(req, res){
 
         console.log(fileext);
     }else{
-        req.status(200).send({message: 'No ha subido ninguna archivo'});
+        res.status(200).send({message: 'No ha subido ninguna archivo'});
     }
 }
 
@@ -145,7 +143,7 @@ function getFile(req, res){
         if(exists){
             res.sendFile(path.resolve(filePath));
         }else{
-            req.status(200).send({message: 'El archivo no existe'});
+            res.status(200).send({message: 'El archivo no existe'});
         }
     })
 }

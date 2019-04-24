@@ -134,9 +134,7 @@ function uploadImage(req, res){
 
     if(req.files){
         var filepath = req.files.image.path;
-        var filesplit = filepath.split('\\');
-        
-        filename = filesplit[2];
+        var filename = filepath.split('\\').pop().split('/').pop();
 
         var filenamesplit = filename.split('\.');
         var fileext = filenamesplit[1];
@@ -159,7 +157,7 @@ function uploadImage(req, res){
 
         console.log(fileext);
     }else{
-        req.status(200).send({message: 'No ha subido ninguna imagen'});
+        res.status(200).send({message: 'No ha subido ninguna imagen'});
     }
 }
 
@@ -170,7 +168,7 @@ function getImageFile(req, res){
         if(exists){
             res.sendFile(path.resolve(filePath));
         }else{
-            req.status(200).send({message: 'La imagen no existe'});
+            res.status(200).send({message: 'La imagen no existe'});
         }
     })
 }
