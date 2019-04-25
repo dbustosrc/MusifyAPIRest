@@ -13,6 +13,6 @@ api.get('/artists/:page?', md_auth.ensureAuth, artistController.getArtists);
 api.put('/artist/:id', md_auth.ensureAuth, artistController.updateArtist);
 api.delete('/artist/:id', md_auth.ensureAuth, artistController.deleteArtist);
 api.post('/upload-image-artist/:id', [md_auth.ensureAuth, md_updload], artistController.uploadImage);
-api.get('/get-image-artist/:imageFile', md_auth.ensureAuth, artistController.getImageFile);
+api.get('/get-image-artist/:imageFile', artistController.getImageFile);
 
 module.exports = api;
