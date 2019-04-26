@@ -74,14 +74,14 @@ function updateAlbum(req, res){
     var albumId = req.params.id;
     var update = req.body;
 
-    Album.findByIdAndUpdate(albumId, update, (err, albumIdUpdated) => {
+    Album.findByIdAndUpdate(albumId, update, (err, albumUpdated) => {
         if(err){
             res.status(500).send({message: 'Error al actualizar el álbum'});
         }else{
-            if(!albumIdUpdated){
+            if(!albumUpdated){
                 res.status(404).send({message: 'No se ha podido actualizar el álbum'});
             }else{
-                res.status(200).send({albumIdUpdated});
+                res.status(200).send({albumUpdated});
             }
         }
     })
