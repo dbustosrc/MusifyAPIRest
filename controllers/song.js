@@ -74,14 +74,14 @@ function updateSong(req, res){
     var songId = req.params.id;
     var update = req.body;
 
-    Song.findByIdAndUpdate(songId, update, (err, songIdUpdated) => {
+    Song.findByIdAndUpdate(songId, update, (err, songUpdated) => {
         if(err){
             res.status(500).send({message: 'Error al actualizar la canción'});
         }else{
-            if(!songIdUpdated){
+            if(!songUpdated){
                 res.status(404).send({message: 'No se ha podido actualizar la canción'});
             }else{
-                res.status(200).send({songIdUpdated});
+                res.status(200).send({songUpdated});
             }
         }
     })
@@ -129,8 +129,6 @@ function uploadFile(req, res){
         }else{
             res.status(200).send({message: 'Extensión del archivo no válida'});
         }
-
-        console.log(fileext);
     }else{
         res.status(200).send({message: 'No ha subido ninguna archivo'});
     }

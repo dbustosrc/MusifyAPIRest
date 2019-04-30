@@ -13,6 +13,6 @@ api.get('/songs/:album?', md_auth.ensureAuth, songController.getSongs);
 api.put('/song/:id', md_auth.ensureAuth, songController.updateSong);
 api.delete('/song/:id', md_auth.ensureAuth, songController.deleteSong);
 api.post('/upload-file-song/:id', [md_auth.ensureAuth, md_updload], songController.uploadFile);
-api.get('/get-file-song/:songFile', md_auth.ensureAuth, songController.getFile);
+api.get('/get-file-song/:songFile', songController.getFile);
 
 module.exports = api;

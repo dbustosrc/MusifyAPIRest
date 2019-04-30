@@ -154,8 +154,6 @@ function uploadImage(req, res){
         }else{
             res.status(200).send({message: 'Extensión del archivo no válida'});
         }
-
-        console.log(fileext);
     }else{
         res.status(200).send({message: 'No ha subido ninguna imagen'});
     }
